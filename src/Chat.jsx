@@ -10,7 +10,7 @@ const Chat = ({ chatId, token }) => {
   const history = useHistory();
 
   useEffect(() => {
-    const newSocket = io('http://localhost:3002', {
+    const newSocket = io('https://chatapp-backend-09n7.onrender.com', {
       query: { token },
       reconnection: true,
       reconnectionAttempts: 5,
@@ -48,7 +48,7 @@ const Chat = ({ chatId, token }) => {
   useEffect(() => {
     const fetchMessages = async () => {
       try {
-        const response = await axios.get(`http://localhost:3002/chats/private/${chatId}/messages`, {
+        const response = await axios.get(`https://chatapp-backend-09n7.onrender.com/chats/private/${chatId}/messages`, {
           headers: { Authorization: `Bearer ${token}` }
         });
         console.log('Fetched messages:', response.data.messages);
@@ -69,7 +69,7 @@ const Chat = ({ chatId, token }) => {
     if (!message.trim()) return;
 
     try {
-      const response = await axios.post(`http://localhost:3002/chats/private/${chatId}/messages`, { content: message }, {
+      const response = await axios.post(`https://chatapp-backend-09n7.onrender.com/chats/private/${chatId}/messages`, { content: message }, {
         headers: { Authorization: `Bearer ${token}` }
       });
       console.log('Message sent:', response.data.newMessage);

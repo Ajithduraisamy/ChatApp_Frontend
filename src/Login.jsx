@@ -25,7 +25,7 @@ function Login() {
     },
     onSubmit: async (values, actions) => {
       try {
-        const response = await axios.post('http://localhost:3002/login', values);
+        const response = await axios.post('https://chatapp-backend-09n7.onrender.com/login', values);
         const token = response.data.token;
         login(token);
         actions.resetForm();

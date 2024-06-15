@@ -13,10 +13,10 @@ const Sidebar = ({ socket }) => {
     const fetchContactsAndGroups = async () => {
       try {
         const token = localStorage.getItem('token');
-        const contactsResponse = await axios.get('http://localhost:3002/contacts', {
+        const contactsResponse = await axios.get('https://chatapp-backend-09n7.onrender.com/contacts', {
           headers: { Authorization: `Bearer ${token}` },
         });
-        const groupsResponse = await axios.get('http://localhost:3002/groups', {
+        const groupsResponse = await axios.get('https://chatapp-backend-09n7.onrender.com/groups', {
           headers: { Authorization: `Bearer ${token}` },
         });
         setContacts(contactsResponse.data.contacts);
@@ -33,7 +33,7 @@ const Sidebar = ({ socket }) => {
   const handleCreateGroup = async () => {
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.post('http://localhost:3002/groups', { name: groupName }, {
+      const response = await axios.post('https://chatapp-backend-09n7.onrender.com/groups', { name: groupName }, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setGroups([...groups, response.data.group]);
@@ -47,11 +47,11 @@ const Sidebar = ({ socket }) => {
   const handleJoinGroup = async (groupId) => {
     try {
       const token = localStorage.getItem('token');
-      await axios.post(`http://localhost:3002/groups/${groupId}/join`, {}, {
+      await axios.post(`https://chatapp-backend-09n7.onrender.com/groups/${groupId}/join`, {}, {
         headers: { Authorization: `Bearer ${token}` },
       });
       // After successful join, fetch updated groups list
-      const groupsResponse = await axios.get('http://localhost:3002/groups', {
+      const groupsResponse = await axios.get('https://chatapp-backend-09n7.onrender.com/groups', {
         headers: { Authorization: `Bearer ${token}` },
       });
       setGroups(groupsResponse.data.groups);

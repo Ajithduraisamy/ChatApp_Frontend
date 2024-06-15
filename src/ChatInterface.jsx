@@ -21,7 +21,7 @@ const ChatInterface = () => {
   const messagesEndRef = useRef(null);
 
   useEffect(() => {
-    const newSocket = io('http://localhost:3002', {
+    const newSocket = io('https://chatapp-backend-09n7.onrender.com', {
       query: { token: user.token }
     });
     setSocket(newSocket);
@@ -67,7 +67,7 @@ const ChatInterface = () => {
 
   const fetchContacts = async () => {
     try {
-      const response = await axios.get('http://localhost:3002/contacts', {
+      const response = await axios.get('https://chatapp-backend-09n7.onrender.com/contacts', {
         headers: {
           Authorization: `Bearer ${user.token}`
         }
@@ -80,7 +80,7 @@ const ChatInterface = () => {
 
   const fetchRecentChats = async () => {
     try {
-      const response = await axios.get('http://localhost:3002/chats/recent', {
+      const response = await axios.get('https://chatapp-backend-09n7.onrender.com/chats/recent', {
         headers: {
           Authorization: `Bearer ${user.token}`
         }
@@ -137,7 +137,7 @@ const ChatInterface = () => {
     setSelectedChat(chat);
 
     try {
-      const response = await axios.get(`http://localhost:3002/chats/${chat._id}/messages`, {
+      const response = await axios.get(`https://chatapp-backend-09n7.onrender.com/chats/${chat._id}/messages`, {
         headers: { Authorization: `Bearer ${user.token}` }
       });
       setMessages(response.data.messages);
@@ -151,7 +151,7 @@ const ChatInterface = () => {
 
   const handleSelectContact = async (contact) => {
     try {
-      const response = await axios.post("http://localhost:3002/chats/private", { recipientId: contact._id }, {
+      const response = await axios.post("https://chatapp-backend-09n7.onrender.com/chats/private", { recipientId: contact._id }, {
         headers: { Authorization: `Bearer ${user.token}` }
       });
       handleSelectChat(response.data.chat);

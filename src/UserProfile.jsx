@@ -26,7 +26,7 @@ const UserProfile = () => {
                 }
 
                 const token = user.token;
-                const response = await axios.get(`http://localhost:3002/user-profile/${userId}`, {
+                const response = await axios.get(`https://chatapp-backend-09n7.onrender.com/user-profile/${userId}`, {
                     headers: {
                         'Authorization': `Bearer ${token}`
                     }

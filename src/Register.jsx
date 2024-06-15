@@ -40,7 +40,7 @@ function Register() {
         },
         onSubmit: async (values, actions) => {
             try {
-                await axios.post('http://localhost:3002/register', values);
+                await axios.post('https://chatapp-backend-09n7.onrender.com/register', values);
                 navigate('/login');
                 actions.resetForm();
             } catch (error) {

@@ -17,7 +17,7 @@ export function AuthProvider({ children }) {
     const token = localStorage.getItem('token');
     const userId = localStorage.getItem('userId');
     if (token && userId) {
-      axios.get('http://localhost:3002/user/me', {
+      axios.get('https://chatapp-backend-09n7.onrender.com/user/me', {
         headers: {
           'Authorization': `Bearer ${token}`
         }
@@ -25,7 +25,7 @@ export function AuthProvider({ children }) {
         .then(userResponse => {
           const { userId } = userResponse.data;
           localStorage.setItem('userId', userId);
-          axios.get('http://localhost:3002/contacts', {
+          axios.get('https://chatapp-backend-09n7.onrender.com/contacts', {
             headers: {
               'Authorization': `Bearer ${token}`
             }
@@ -51,7 +51,7 @@ export function AuthProvider({ children }) {
   const login = async (token) => {
     localStorage.setItem('token', token);
     try {
-      const userResponse = await axios.get('http://localhost:3002/user/me', {
+      const userResponse = await axios.get('https://chatapp-backend-09n7.onrender.com/user/me', {
         headers: {
           'Authorization': `Bearer ${token}`
         }
@@ -59,7 +59,7 @@ export function AuthProvider({ children }) {
       const { userId } = userResponse.data;
       localStorage.setItem('userId', userId);
 
-      const contactsResponse = await axios.get('http://localhost:3002/contacts', {
+      const contactsResponse = await axios.get('https://chatapp-backend-09n7.onrender.com/contacts', {
         headers: {
           'Authorization': `Bearer ${token}`
         }
