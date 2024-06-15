@@ -27,7 +27,7 @@ To run this frontend application locally, follow these steps:
   npm start
 
 4. Open the application
-  Open http://localhost:3000 in your browser to view the frontend of the chat application.
+  Open http://localhost:5173/ in your browser to view the frontend of the chat application.
 
 **Contributing**
   Contributions are welcome! Please fork the repository and create a pull request with your improvements.
